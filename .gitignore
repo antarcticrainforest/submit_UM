@@ -1,0 +1,11 @@
+*.txt
+*.swp
+*.pyc
+*.cfg
+*.out
+umuisubmit_*
+stage_?_submit*
+archi_*
+archiv.todo
+umsubmit
+FCM_*_CFG*
