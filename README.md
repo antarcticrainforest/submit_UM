@@ -46,14 +46,14 @@ This variables are needed but don't have to be necessarily change
 
 The model source code should only be extracted once from the svn server. To initially extract the source simply run:
 ```sh
-$ ./MAIN_SCR --extr
+$ ./main.sh --extr
 ```
 This will extract the model source into the directory you have chosen in `DIR_SCR`(`UM_ROUTDIR`). By default the scripts also creates a git repository in the source code folder. Once the source is extracted you can start changing the model source code. 
 
 Once changes are done and commited in your local git gepository (not neseccary but recommended) you can run the ``MAIN_SCR`` script without any parameters
 
 ```sh
-$ ./MAIN_SCR
+$ ./main.sh
 ```
 
 This compiles the edited model version and submits the job for calculation.
