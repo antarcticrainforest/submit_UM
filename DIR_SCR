@@ -1,0 +1,22 @@
+export RUNID=coastal01
+export USERID=$USER
+export DATAW=/short/$PROJECT/$USER 
+export UM_RDATADIR=$HOME/Programming/UM/coastal
+export UM_ROUTDIR=$UM_RDATADIR
+export extr_host='accessdev.nci.org.au'
+export RHOST_NAME=raijin.nci.org.au
+
+
+
+#Environment variables for FCM bindings and repositories
+export UM_SVN_BIND=fcm:um_dev/mb6059/vn8.6_coastal/src/configs/bindings
+export UM_CONTAINER=$UM_SVN_BIND/container.cfg@HEAD
+export UM_SVN_URL=fcm:um-tr
+export UM_VN=vn8.6
+export JULES_SVN_URL=fcm:jules/trunk
+export JULES_VER=vn8.6
+export UM_USR_MACH_OVRDS=/dev/null
+export UM_USR_FILE_OVRDS=/dev/null
+export UM_USR_PATHS_OVRDS=/dev/null
+export UM_MACHINE=linux-ifort-nci
+export UM_PREBUILD=""

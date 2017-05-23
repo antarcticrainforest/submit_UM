@@ -1,0 +1,16 @@
+# Repository Extract switches
+EXTR_UMATMOS=true
+EXTR_JULES=true
+EXTR_FLAKE=false
+EXTR_NEMO=false
+EXTR_CICE=false
+
+# Model build switches
+COMP_UMSCRIPTS=true
+COMP_UMATMOS=true
+COMP_UMRECON=true
+COMP_NEMO=false
+COMP_CICE=false
+COMP_NEMO_CICE=false
+COMP_UM_NEMO_CICE=false
+ 
