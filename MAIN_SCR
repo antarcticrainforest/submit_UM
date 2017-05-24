@@ -11,12 +11,7 @@
 
 
 #---------------------------------------------
-# User defined environment variables
-#---------------------------------------------
-export UM_RAD_SPECTRAL_GL=$UMDIR/vn$VN/ctldata/spectral
-export STARTDUMPS=/projects/access/data/input_dumps/GA6
-
-#---------------------------------------------
+# User defined environment variables and
 # Job specific variables
 #---------------------------------------------
 

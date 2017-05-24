@@ -1,14 +1,7 @@
-export RUNID=coastal01
-export USERID=$USER
-export DATAW=/short/$PROJECT/$USER 
-export UM_RDATADIR=$HOME/Programming/UM/coastal
-export UM_ROUTDIR=$UM_RDATADIR
-export extr_host='accessdev.nci.org.au'
-export RHOST_NAME=raijin.nci.org.au
-
-
 
 #Environment variables for FCM bindings and repositories
+#and also data paths for the run environment
+
 export UM_SVN_BIND=fcm:um_dev/mb6059/vn8.6_coastal/src/configs/bindings
 export UM_CONTAINER=$UM_SVN_BIND/container.cfg@HEAD
 export UM_SVN_URL=fcm:um-tr
@@ -20,3 +13,17 @@ export UM_USR_FILE_OVRDS=/dev/null
 export UM_USR_PATHS_OVRDS=/dev/null
 export UM_MACHINE=linux-ifort-nci
 export UM_PREBUILD=""
+export RUNID=vasxa
+export USERID=$USER
+export DATAW=/short/$PROJECT/$USER/$RUNID
+export UM_ROUTDIR=$HOME/Programming/UM/$USERID/$RUNID
+export UM_RDATADIR=/short/$PROJECT/$USER/$RUNID
+export UM_RHOST=raijin.nci.org.au
+export UM_RLOGNAME=$USERID
+export UM_REMOTE_SHELL=ssh
+export UM_MAINDIR=$HOME/Programming/UM/$RUNID
+export extr_host=accessdev.nci.org.au
+export UM_RAD_SPECTRAL_GL=$UMDIR/vn$VN/ctldata/spectral
+export STARTDUMPS=/projects/access/data/input_dumps/GA6
+export SPECTRAL_FILE_DIR=$UM_RAD_SPECTRAL_GL/ga3_0
+export PROCESSED_DIR=/home/565/mb6059/umui_jobs/vasxa
