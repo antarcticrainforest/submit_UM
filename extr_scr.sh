@@ -12,7 +12,7 @@
 export PROCESSED_DIR=$(dirname $(readlink -f $0))
 
 . $PROCESSED_DIR/DIR_SCR
-
+export UM_RDATADIR=$UM_ROUTDIR
 export USERID=$USER
 
 

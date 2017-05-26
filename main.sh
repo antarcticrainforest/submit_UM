@@ -16,14 +16,14 @@
 #---------------------------------------------
 
 export PROCESSED_DIR=$(dirname $(readlink -f $0))
+
 . $PROCESSED_DIR/DIR_SCR
 . $PROCESSED_DIR/COMP_SWITCHES
-
 
 #Create the umuisubmit scripts
 $PROCESSED_DIR/submit.sh
 
-
+UM_RDATADIR=$UM_ROUTDIR
 # Loop through all submodels and set up RUN_COMPILE
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 run_compile=false
