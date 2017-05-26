@@ -97,9 +97,9 @@ def read_info(f1,remotehost,old):
       dataw=j.strip().split('=')[-1]
       if dataw[-1] == '/' :
         dataw=dataw[:-1]
-      datadir=os.paht.dirname(dataw)
+      datadir=os.path.dirname(dataw)
       export.append('export DATAW=%s'%dataw)
-      export.datadir('export DATADIR=%s'%datadir)
+      export.append('export DATADIR=%s'%datadir)
     elif j.startswith('export'): #Any other important variable
       export.append(j.strip())
     if 'Local Script Variables' in j or 'Loop through' in j : #From here on we are done, exit
@@ -161,12 +161,12 @@ if __name__ == '__main__':
   #What are the important files in the remotepath on the remote_server?
   sources = {'FCM_*_CFG':thepath,
       'EXTR_SCR':'%s/.tmp'%thepath,
-      'MAIN_SCR':'%s/tmp2',
+      'MAIN_SCR':'%s/.tmp2'%thepath,
       '*CNTL*':thepath,
       'FCM_*':thepath,
       '*INIT*':thepath,
       'COMP_SWITCHES':thepath,
-      'JOBSHED':thepath,
+      'JOBSHEET':thepath,
       'PRESM_A':thepath,
       'RECONA':thepath,
       'SCRIPT':thepath,
