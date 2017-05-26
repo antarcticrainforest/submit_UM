@@ -57,11 +57,11 @@ def get_path():
   '''
   return os.path.dirname(os.path.abspath(sys.argv[0])) #The the path of this script
 
-def copy(sources,targets,remotehost,remotepath):
+def copy(sources,remotehost,remotepath):
   '''
     Function to copy (via scp) important files from the remote host
   '''
-  for s,t in zip(sources,targets):
+  for s,t in sources.iteritems():
     cmd='scp -q %s:%s/%s %s' %(remotehost,remotepath,s,t)
     os.system(cmd) #Copy the stuff
 
@@ -89,6 +89,17 @@ def read_info(f1,remotehost,old):
       svn_serv=[j.strip()]
     elif 'UM_ROUTDIR' in j or 'UM_RDATADIR' in j: #The dir's of the source
       export.append('export %s'%j.strip())
+    elif 'UM_VN' in j :
+      vn=j.strip().split('=')[-1].replace('vn','')
+      export.append('export UM_VN=vn%s'%vn)
+      export.append('export VN=%s'%vn)
+    elif 'DATAW' in j:
+      dataw=j.strip().split('=')[-1]
+      if dataw[-1] == '/' :
+        dataw=dataw[:-1]
+      datadir=os.paht.dirname(dataw)
+      export.append('export DATAW=%s'%dataw)
+      export.datadir('export DATADIR=%s'%datadir)
     elif j.startswith('export'): #Any other important variable
       export.append(j.strip())
     if 'Local Script Variables' in j or 'Loop through' in j : #From here on we are done, exit
@@ -148,10 +159,24 @@ if __name__ == '__main__':
   remotepath = get_remote_path('The output of the umui process should give a output path (output in directory). Copy and paste that path\n')
 
   #What are the important files in the remotepath on the remote_server?
-  sources = ('FCM_*_CFG','EXTR_SCR','MAIN_SCR')
-  targets = (thepath,'%s/.tmp'%thepath,'%s/.tmp2'%thepath)
+  sources = {'FCM_*_CFG':thepath,
+      'EXTR_SCR':'%s/.tmp'%thepath,
+      'MAIN_SCR':'%s/tmp2',
+      '*CNTL*':thepath,
+      'FCM_*':thepath,
+      '*INIT*':thepath,
+      'COMP_SWITCHES':thepath,
+      'JOBSHED':thepath,
+      'PRESM_A':thepath,
+      'RECONA':thepath,
+      'SCRIPT':thepath,
+      'SHARED':thepath,
+      'SIZES':thepath,
+      'STASHC':thepath,
+      'USR_*':thepath}
+
   #Copy some of the files that contain vital info from the remote_host
-  copy(sources,targets,remotehost,remotepath)
+  copy(sources,remotehost,remotepath)
 
   #Get all the important information from the just copied files
   info = read_info(os.path.join(thepath,'.tmp'),remotehost,'')

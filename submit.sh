@@ -434,7 +434,7 @@ cat >>$archi_sub<<EOF
 #@ node_usage      = shared
 #@ queue
 
-$archi_path/$archi_name ${DATAW%/}/${RUNID}
+$archi_path/$archi_name ${DATAW%/}
 EOF
 
 # Generate the archi_script script for submitting archi_submit
@@ -452,8 +452,8 @@ cat >>$archi_todo<<EOF
 [header]
 RUNID:${RUNID}
 HOME:$HOME
-DATAM:${DATAW%/}/${RUNID}
-VN:8.6
+DATAM:${DATAW%/}
+VN:$VN
 
 EOF
 # END OF FILE

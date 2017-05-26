@@ -15,18 +15,13 @@
 # Job specific variables
 #---------------------------------------------
 
-export SPECTRAL_FILE_DIR=$UM_RAD_SPECTRAL_GL/ga3_0
-
-
-
-
 export PROCESSED_DIR=$(dirname $(readlink -f $0))
 . $PROCESSED_DIR/DIR_SCR
 . $PROCESSED_DIR/COMP_SWITCHES
 
 
 #Create the umuisubmit scripts
-$PROCESSED_DIR/SUBMIT
+$PROCESSED_DIR/submit.sh
 
 
 # Loop through all submodels and set up RUN_COMPILE
@@ -53,16 +48,16 @@ if [ ${argv:0:3} == 'ext' ];then
    
    RC=0
    echo
-   echo MAIN_SCR: Calling Extract ...
+   echo main.sh: Calling Extract ...
    ssh $extr_host mkdir -p ${PROCESSED_DIR}
    rsync -avz ${PROCESSED_DIR%/}/* $extr_host:${PROCESSED_DIR%/}/
    if [ $? -eq 0 ];then
-     echo MAIN_SCR: Copy ok
+     echo main.sh: Copy ok
    else
-     echo MAIN_SCR: Copy failed >&2
+     echo main.sh: Copy failed >&2
      exit $?
    fi
-   ssh $extr_host $PROCESSED_DIR/EXTR_SCR
+   ssh $extr_host $PROCESSED_DIR/extr_scr.sh
    RC=$?
    if test $RC -eq 0 ; then
       echo MAIN_SCR: Extract OK
@@ -87,7 +82,7 @@ if test $RC -eq 0 ; then
    echo
    echo MAIN_SCR: Calling UMSUBMIT ...
 
-     $PROCESSED_DIR/UMSUBMIT \
+     $PROCESSED_DIR/umsubmit.sh \
      -h raijin.nci.org.au \
      -u ${USERID} \
      -m 4 \
