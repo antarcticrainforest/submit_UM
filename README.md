@@ -28,22 +28,7 @@ You can also change the host server name where the umui output is located (defau
 $ python setup.py -h someservername.org
 ```
 
-`setup.py` creates a file called `DIR_SCR`. This file needs to be edited. You should edit the following variables:
-
-| Variable Name | Purpose |
-| ------ | ------ |
-|extr_host | the server host name where the model source is located (default accessdev.nci.org.au) | 
-|RHOST_NAME | the name of the host server (default raijin.nci.org.au)|
-|RUNID | The id of the experiment |
-|UM_RDATADIR| The extract location on extr_host|
-|UM_ROUTDIR|The final location of the model source|
-
-This variables are needed but don't have to be necessarily change 
-
-| Variable Name | Purpose |
-| ------ | ------ |
-|DATAW |The path where the model output is saved|
-
+`setup.py` creates a file called `DIR_SCR`. This file stores some important environment variables that are needed to extract, compile and submit the model code.
 
 ### Running the script
 
@@ -51,9 +36,9 @@ The model source code should only be extracted once from the svn server. To init
 ```sh
 $ ./main.sh --extr
 ```
-This will extract the model source into the directory you have chosen in `DIR_SCR`(`UM_ROUTDIR`). By default the scripts also creates a git repository in the source code folder. Once the source is extracted you can start changing the model source code. 
+This will extract the model source into the directory you have chosen in the `umui` (`UM_ROUTDIR`). By default the scripts also creates a git repository in the source code folder. Once the source is extracted you can start changing the model source code. 
 
-Once changes are done and committed in your local git repository (not neseccary but recommended) you can run the ``MAIN_SCR`` script without any parameters
+Once changes are done and committed in your local git repository (not neseccary but recommended) you can run the ``extr_scr`` script without any parameters
 
 ```sh
 $ ./main.sh
