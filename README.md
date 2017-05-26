@@ -14,7 +14,9 @@ You will need a working `umui` (the graphical user interface for the UM) job con
 ### Installation
 Once a working configuration is created. You will need hit the  `extract` button from within the `umui`. Once this is done the program will tell you the output directory path (e.g):
 ```sh
-The ouptut directory is : /home/565/mb6059/umui_jobs/vasxa 
+----------------------------------------------------------------------
+Jobsheet Processing completed.
+Processing complete, output in directory: /home/565/mb6059/umui_jobs/vasxa
 ```
 Copy this directory and run the `setup.py` script:
 ```sh
