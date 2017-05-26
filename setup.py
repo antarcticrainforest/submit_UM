@@ -65,7 +65,7 @@ def copy(sources,remotehost,remotepath):
     cmd='scp -q %s:%s/%s %s' %(remotehost,remotepath,s,t)
     os.system(cmd) #Copy the stuff
 
-def read_info(f1,remotehost,old):
+def read_info(f1,remotehost,old,thepath):
 
   '''
     This function opens the downloaded files and looks for important
@@ -75,6 +75,7 @@ def read_info(f1,remotehost,old):
       f1 (str-object):  filename of the file containing the info in the 
                         EXTR_SCR script that has been created by the umui
       remotehost (str-obj): The name of the host where the um source is stored
+      thepath (str-object): The name of the path of this script
   '''
 
   old=old.split('\n') #Convert strng the list for later use
@@ -87,7 +88,7 @@ def read_info(f1,remotehost,old):
   for ii,j in enumerate(jobsheet):
     if 'UM_SVN_BIND=' in j: #The svn url
       svn_serv=[j.strip()]
-    elif 'UM_ROUTDIR' in j or 'UM_RDATADIR' in j: #The dir's of the source
+    elif 'UM_ROUTDIR' in j: #The dir's of the source
       export.append('export %s'%j.strip())
     elif 'UM_VN' in j :
       vn=j.strip().split('=')[-1].replace('vn','')
@@ -100,6 +101,8 @@ def read_info(f1,remotehost,old):
       datadir=os.path.dirname(dataw)
       export.append('export DATAW=%s'%dataw)
       export.append('export DATADIR=%s'%datadir)
+    elif 'PROCESSED_DIR' in j:
+      export.append('export PROCESSED_DIR=%s'%thepath)
     elif j.startswith('export'): #Any other important variable
       export.append(j.strip())
     if 'Local Script Variables' in j or 'Loop through' in j : #From here on we are done, exit
@@ -179,8 +182,8 @@ if __name__ == '__main__':
   copy(sources,remotehost,remotepath)
 
   #Get all the important information from the just copied files
-  info = read_info(os.path.join(thepath,'.tmp'),remotehost,'')
-  info = read_info(os.path.join(thepath,'.tmp2'),remotehost,info)
+  info = read_info(os.path.join(thepath,'.tmp'),remotehost,'',thepath)
+  info = read_info(os.path.join(thepath,'.tmp2'),remotehost,info,thepath)
 
   #And save the info to the DIR_SCR file
   with open(os.path.join(thepath,'DIR_SCR'),'w') as f:
