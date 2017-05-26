@@ -187,5 +187,5 @@ if __name__ == '__main__':
     f.write(info+'\n')
 
   #We are done let the user know
-  print 'Installation done: You can now run MAIN_SRC --extr extract the code on create a git repo'
+  print 'Installation done: You can now run main.sh --extr extract the code on create a git repo'
 
