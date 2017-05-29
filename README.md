@@ -32,16 +32,29 @@ $ python setup.py -h someservername.org
 
 ### Running the script
 
-The model source code should only be extracted once from the svn server. To initially extract the source simply run:
+The run script `main.sh` has three parameters:
+
+|Command | Purpose |
+| ------ |  ------ |
+|``` $ ./main.sh --extr``` | Extracts the UM source code into the `UM_ROUTDIR` folder |
+|``` $ ./main.sh --compile``` | Builds the extracted source |
+|``` $ ./main.sh --run/--submit``` | Submits the UM job |
+
+When running this script for the first time it is essential to extract the UM source code from the svn repository via: 
 ```sh
-$ ./main.sh --extr
+$ ./main.sh --compile
 ```
-This will extract the model source into the directory you have chosen in the `umui` (`UM_ROUTDIR`). By default the scripts also creates a git repository in the source code folder. Once the source is extracted you can start changing the model source code. 
 
-Once changes are done and committed in your local git repository (not neseccary but recommended) you can run the ``extr_scr`` script without any parameters
+The extracted command will fetch the model source into the directory you have chosen by the `umui` (`UM_ROUTDIR`). The script also creates a git repository in this folder. Once the source is extracted you can start changing the code. Once changes are done and committed in your local git repository (not neseccary but recommended) you can compile the source with:
+```sh
+$ ./main.sh --compile
+```
+This compiles the edited model version. The built source can finally be submitted via:
 
 ```sh
-$ ./main.sh
+$ ./main.sh --run
 ```
-
-This compiles the edited model version and submits the job for calculation.
+or:
+```sh
+$ ./main.sh --submit
+```
