@@ -36,9 +36,9 @@ The run script `main.sh` has three parameters:
 
 |Command | Purpose |
 | ------ |  ------ |
-|``` $ ./main.sh --extr``` | Extracts the UM source code into the `UM_ROUTDIR` folder |
-|``` $ ./main.sh --compile``` | Builds the extracted source |
-|``` $ ./main.sh --run/--submit``` | Submits the UM job |
+|--extr | Extracts the UM source code into the `UM_ROUTDIR` folder |
+|--compile | Builds the extracted source |
+|--run/--submit | Submits the UM job |
 
 When running this script for the first time it is essential to extract the UM source code from the svn repository via: 
 ```sh
