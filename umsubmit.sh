@@ -122,11 +122,11 @@ fi
 # Obtain unique id by using date and time
 submitid=`date +%j%H%M%S`
 # Directory on this machine which holds processed files
-processedDir=$homeDir/umui_jobs/$exp_id
+processedDir=$(dirname $(readlink -f $0))
 # Directory on host to which files will be copied
 rundir=umui_runs/$exp_id-$submitid
 # File name of executable script
-runfile=SUBMIT
+runfile=submit.sh
 
 if ! test -d $processedDir; then
   echo Job library directory $processedDir could not be found
