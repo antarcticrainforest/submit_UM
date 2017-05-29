@@ -22,7 +22,7 @@ Copy this directory and run the `setup.py` script:
 ```sh
 $ python setup.py
 ```
-During the execution of the script you will be ask for the location of the umui output path. Simply paste the copied path.
+During the execution of the script you will be asked for the location of the umui output path. Simply paste the copied path.
 You can also change the host server name where the umui output is located (default is accessdev.nic.org.au):
 ```sh
 $ python setup.py -h someservername.org
