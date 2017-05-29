@@ -42,10 +42,10 @@ The run script `main.sh` has three parameters:
 
 When running this script for the first time it is essential to extract the UM source code from the svn repository via: 
 ```sh
-$ ./main.sh --compile
+$ ./main.sh --extr
 ```
 
-The extracted command will fetch the model source into the directory you have chosen by the `umui` (`UM_ROUTDIR`). The script also creates a git repository in this folder. Once the source is extracted you can start changing the code. Once changes are done and committed in your local git repository (not neseccary but recommended) you can compile the source with:
+The extract command will fetch the model source into the directory you have chosen in the `umui` (`UM_ROUTDIR`). The script also creates a git repository in this folder. Once the source is extracted you can start changing the code. When changes are done and committed in your local git repository (not neseccary but recommended) you can compile the source with:
 ```sh
 $ ./main.sh --compile
 ```
